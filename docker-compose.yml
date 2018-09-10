@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  api:
+    image: eggjs/eggapp-docker
+    environment:
+      - APP_NAME=api
+      - MONGO_HOST={your mongodb ip address}
+      - MONGO_PORT={your mongodb port}
+      - MONGO_DB={your mongodb database name}
+      - MONGO_USER={your mongodb auth username}
+      - MONGO_PASSWORD={your mongodb auth password}
+    ports:
+      - 7001:7001
+    volumes:
+      - ../api:/usr/src/eggapp/api
+      # - ../api/node_modules:/usr/src/eggapp/api/node_modules
+    restart: always
+    networks:
+      - app-tier
